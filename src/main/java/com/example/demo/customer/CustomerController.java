@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 //API layers komunikuoti tarp customer klases ir service klases
 
@@ -22,6 +23,7 @@ public class CustomerController {
     public List<Customer> getCustomers() {
         return customerService.getCustomers();
     }
+
 }
 
 
