@@ -1,5 +1,10 @@
 package com.example.demo.customer;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.env.RandomValuePropertySource;
+
+import javax.annotation.processing.Generated;
+import java.beans.Transient;
 import java.time.LocalDate;
 
 public class Customer {
@@ -21,13 +26,21 @@ public class Customer {
           this.email = email;
      }
 
-     public Customer(String name, String surname, LocalDate birthDate, String telNumber, String email) {
+     public Customer(Integer id, String name, String surname, String telNumber, String email) {
+          this.id = id;
+          this.name = name;
+          this.surname = surname;
+          this.telNumber = telNumber;
+          this.email = email;
+     }
+
+     /*     public Customer(String name, String surname, LocalDate birthDate, String telNumber, String email) {
           this.name = name;
           this.surname = surname;
           this.birthDate = birthDate;
           this.telNumber = telNumber;
           this.email = email;
-     }
+     }*/
 
      public int getId() {
           return id;
