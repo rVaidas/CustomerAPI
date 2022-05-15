@@ -23,7 +23,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public void addNewCustomer(Customer newCust) {
+    public void addNewCustomer(@RequestBody Customer newCust) {
         customerService.addNewCustomer(newCust);
     }
 
