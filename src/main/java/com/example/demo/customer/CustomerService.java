@@ -20,7 +20,9 @@ public class CustomerService {
     }
 
     public void addNewCustomer(Customer newCust){
-       customerData.addCustomer(newCust);
+        newCust.setId(customerData.nextId());
+        customerData.addCustomer(newCust);
+
     }
 
 }

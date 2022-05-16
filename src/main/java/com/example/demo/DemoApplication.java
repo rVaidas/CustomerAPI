@@ -23,6 +23,8 @@ public class DemoApplication {
 
        // fillCustomerData();
 
+    //    System.out.println(java.time.LocalDate.now());
+
     }
 
 }
