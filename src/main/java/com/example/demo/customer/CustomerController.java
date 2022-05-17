@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 //API layers komunikuoti tarp customer klases ir service klases
 
@@ -24,30 +25,34 @@ public class CustomerController {
         return customerService.getCustomers();
     }
 
-/*    @PostMapping("/save")*/
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> addNewCustomer(@RequestBody Customer newCust) {
         try {
             validateCustomerData(newCust);
             customerService.addNewCustomer(newCust);
-            return ResponseEntity.ok("Vartotojas sukurtas");
-        } catch (Exception e){
-            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+            return ResponseEntity.ok("Vartotojas sukurtas sėkmingai");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Klaida: " + e.getMessage());
         }
     }
-    private void validateCustomerData(Customer customer) throws Exception{
+
+    private void validateCustomerData(Customer customer) throws Exception {
         if (customer == null) {
-            throw new Exception("Kontakto objektas turi egzistuoti");
+            throw new Exception("Norint sukurti naują vartotoją, reikia užpildyti tuščius laukelius");
         }
         if (customer.getName() == null || customer.getName().length() <= 1) {
-            throw new Exception("Vardas turi būti bent du simboliai");
+            throw new Exception("Vardą turi sudaryti bent du simboliai");
+        }
+        if (customer.getSurname() == null || customer.getSurname().length() <= 1) {
+            throw new Exception("Pavardę turi sudaryti bent du simboliai");
         }
         if (customer.getBirthDate().isAfter(java.time.LocalDate.now())) {
-            throw new RuntimeException("Date must be earlier than today");
+            throw new Exception("Gimimo data negali būti vėlesnė nei šiandien");
         }
-
+        for (int i = 0; i < getCustomers().size(); i++) {
+            if (customer.getEmail().equals(getCustomers().get(i).getEmail())) {
+                throw new Exception("Vartotojas su tokiu el. pašto adresu jau egzistuoja");
+            }
+        }
     }
-
 }
-
-

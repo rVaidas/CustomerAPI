@@ -16,6 +16,7 @@ public class CustomerService {
     CustomerData customerData;
 
     public List<Customer> getCustomers() {
+
         return customerData.getAllCustomers();
     }
 

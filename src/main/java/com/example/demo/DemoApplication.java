@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
@@ -24,6 +25,8 @@ public class DemoApplication {
        // fillCustomerData();
 
     //    System.out.println(java.time.LocalDate.now());
+
+
 
     }
 
