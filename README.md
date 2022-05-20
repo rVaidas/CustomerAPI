@@ -7,4 +7,5 @@ Project contains:
   -CustomerData class is used instead of database. There is created ArrayList and loaded with data of Customer objects.
   -DemoApplication with main method tu run application.
 API cal be run on (http://localhost:8080/api/v1/customer) Postman or simillar application for posting and getting Jason object.
+Front end part for this project can be found here: https://github.com/rVaidas/customerFrontAngular.
   
